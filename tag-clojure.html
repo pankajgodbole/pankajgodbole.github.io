@@ -23,8 +23,188 @@ Step one: Install <code>org-static-blog</code>. <br>
 Step Two: Execute <code>M-x org-static-blog-create-new-post</code> and write the content. <br>
 Step Three: Execute <code>M-x org-static-blog-publish</code> and upload to your webhost. <br>
 Done.
+Complete..
 </p>
-<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-state.html">state</a> <a href="https://pankajgodbole.github.io/tag-concurrency.html">concurrency</a> </div><div id="archive">
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-state.html">state</a> <a href="https://pankajgodbole.github.io/tag-concurrency.html">concurrency</a> </div>
+<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-data-types.html">Scalar data types, Part 1 - Keywords</a></h1>
+
+<div id="outline-container-org5913f6f" class="outline-2">
+<h2 id="org5913f6f">Introduction</h2>
+<div class="outline-text-2" id="text-org5913f6f">
+<ul class="org-ul">
+<li>Keywords are a very useful concept that are found in Lisp-like languages</li>
+<li>Keywords are symbols that refer to (evaluate to) themselves.</li>
+<li>Because they don't reference any values but themselves, they can be used in numerous ways:
+as keys in maps, as enumerations, as directives, etc.</li>
+<li>A keyword have a special property in that it evaluates to a function call when placed in the function position of an expression.</li>
+<li>Uniquely keywords do not belong to any particular namespace; a keyword may be made to appear to belong to the current namespace by prefixing it with two colons instead of just one.</li>
+</ul>
+
+<p>
+A few simple examples will nicely illustrate the utility of keywords.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; A keyword by itself is self-referential and self-evaluating
+
+:human
+;; :human
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9fd0845" class="outline-2">
+<h2 id="org9fd0845">Keywords as a map keys</h2>
+<div class="outline-text-2" id="text-org9fd0845">
+<ul class="org-ul">
+<li>In practice keywords are used to denote the keys in maps</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; Keywords can be used as keys in a Clojure map
+
+(def bird-sightings {:ravens 3, :golden-eagles 1, :sea-gulls 11})
+; #'code-snippets.core/bird-sightings
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9fa48ee" class="outline-2">
+<h2 id="org9fa48ee">Keywords as functions</h2>
+<div class="outline-text-2" id="text-org9fa48ee">
+<ul class="org-ul">
+<li>In Clojure when a keyword appears in the function position of a list, it does not evaluate to itself, but rather as a function call.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(require '(clojure.java [io :as io]))
+;; nil
+
+(:require '(clojure.java [shell :as sh]))
+;; nil
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>So when a keyword is thus applied to a map, the keyword serves as a 'getter' function</li>
+<li>This results in succint and more readable code.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; A keyword (k) may be applied to a map of which it is a key to retrieve
+;; the value associated with k.
+
+(:golden-eagles bird-sightings)
+;; 1
+
+(/ (:ravens bird-sightings) (:golden-eagles bird-sightings))
+;; 3
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org52b124a" class="outline-2">
+<h2 id="org52b124a">Using keywords for enumeration</h2>
+<div class="outline-text-2" id="text-org52b124a">
+<ul class="org-ul">
+<li>Because keywords evaluate to themselves, they can serve as enumerators in a Clojure container.</li>
+<li>Thus keywords can make Clojure source code more readable by making it more descriptive.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; Keywords serve as effective enumerators
+
+[:zero :one :two :three :four]
+;; [:zero :one :two :three :four]
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org543b79c" class="outline-2">
+<h2 id="org543b79c">Keywords as directives</h2>
+<div class="outline-text-2" id="text-org543b79c">
+<ul class="org-ul">
+<li>Another use for keywords is as directives for functions, macros or multi-methods</li>
+</ul>
+
+<p>
+In the listing shown below "flamingo" "crane" and "stork" (which are all wading birds) are passed as directives to a function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; Keywords can be used as a directive in a function
+;; :else is also a keyword directive
+
+(defn wading-bird?
+  [b]
+  "Takes the name of a bird (b), and returns true if b is a wading bird
+and false otherwise"
+  (cond (= b :flamingo) true
+	(= b :stork) true
+	(= b :crane) true
+	:else false))
+
+(wading-bird? :flamingo)
+;; true
+
+(wading-bird? :stork)
+;; true
+
+(wading-bird? "humming-bird")
+;; false
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3976e46" class="outline-2">
+<h2 id="org3976e46">Qualifying keywords</h2>
+<div class="outline-text-2" id="text-org3976e46">
+<ul class="org-ul">
+<li>A keyword may be qualified by prefixing it with two colons instead of just one.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; Keywords named with double colons are 'qualified' with the current
+;; namespace.
+
+(def uk :unqualified-keyword)
+uk
+;; :unqualified-keyword
+
+(def qk ::qualified-keyword)
+qk
+;; :insights-into-clojure.core/qualified-keyword
+</pre>
+</div>
+
+<p>
+As we can see, when we prefix a keyword with two colons, Clojure automatically qualifies it with the name of the current namespace, which in our case is insights-into-clojure.
+</p>
+
+<ul class="org-ul">
+<li>NOTE A keyword may be qualified by any valid name and not just by a namespace.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-clojure">;; A keyword may be qualified by any valid Clojure name
+
+(ns ns-test)
+:my-qualifier/keyword
+;; :my-qualifier/keyword
+</pre>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-datatypes.html">datatypes</a> <a href="https://pankajgodbole.github.io/tag-keyword.html">keyword</a> </div><div id="archive">
 <a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
 </div>
 </div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://pankajgodbole.github.io/rss.xml"
+      title="RSS feed for https://pankajgodbole.github.io/">
+<title>Insights into Clojure</title>
+<meta name="author" content="John Dow">
+<meta name="referrer" content="no-referrer">
+<link href= "static/style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="static/favicon.ico"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+  <a href="https://pankajgodbole.github.io"> Insights into Clojure </a>
+</div></div>
+<div id="content">
+<h1 class="title">Posts tagged "string":</h1>
+<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-data-types.html">Data types in Clojure</a></h1>
+
+
+<div id="outline-container-org361df60" class="outline-2">
+<h2 id="org361df60">Keywords in Clojure</h2>
+<div class="outline-text-2" id="text-org361df60">
+<ul class="org-ul">
+<li>Keywords are a very useful concept that are found in Lisp-like languages</li>
+<li>Keywords are symbols that refer to (evaluate to) themselves.</li>
+<li>Because they don't reference any values but themselves, they can be used in numerous ways:
+as keys in maps, as enumerations, as directives, etc.</li>
+<li>A keyword have a special property in that it evaluates to a function call when placed in the function position of an expression.</li>
+<li>Uniquely keywords do not belong to any particular namespace; a keyword may be made to appear to belong to the current namespace by prefixing it with two colons instead of just one.</li>
+</ul>
+
+<p>
+A few simple examples will illustrate the utility of keywords nicely.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">:human
+
+; :human
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org733e2af" class="outline-3">
+<h3 id="org733e2af">Using a keyword as a map key</h3>
+<div class="outline-text-3" id="text-org733e2af">
+<ul class="org-ul">
+<li>In practice keywords are used to denote the keys in maps</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">(def bird-sightings {:ravens 3, :golden-eagles 1, :sea-gulls 11})
+
+; #'code-snippets.core/bird-sightings
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48ee30d" class="outline-3">
+<h3 id="org48ee30d">Using a keyword as a function</h3>
+<div class="outline-text-3" id="text-org48ee30d">
+<ul class="org-ul">
+<li>In Clojure when a keyword appears in the function position of a list, it does not evaluate to itself, but as a function call.</li>
+<li>When a keyword is thus applied to a map, it results in succint and more readable code.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">(:golden-eagles bird-sightings)
+;; 1
+
+(/ (:ravens bird-sightings) (:golden-eagles bird-sightings))
+;; 3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b21cde" class="outline-3">
+<h3 id="org1b21cde">Qualified keywords</h3>
+<div class="outline-text-3" id="text-org1b21cde">
+<ul class="org-ul">
+<li>A keyword may be qualified by prefixing it with two colons instead of just one.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">:unqualified-keyword
+::qualified-keyword
+
+;; :unqualified-keyword
+;; :insights-into-clojure.core/qualified-keyword
+</pre>
+</div>
+
+<p>
+As we can see, when we prefix a keyword with two colons, Clojure automatically qualifies it with the name of the current namespace, which is in our case insights-into-clojure.
+</p>
+
+<ul class="org-ul">
+<li>NOTE A keyword may be qualified by any valid name and not just by a namespace.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">(ns ns-test)
+:my-qualifier/keyword
+
+;; :my-qualifier/keyword
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-datatypes.html">datatypes</a> <a href="https://pankajgodbole.github.io/tag-symbol.html">symbol</a> <a href="https://pankajgodbole.github.io/tag-keyword.html">keyword</a> <a href="https://pankajgodbole.github.io/tag-number.html">number</a> <a href="https://pankajgodbole.github.io/tag-string.html">string</a> <a href="https://pankajgodbole.github.io/tag-character.html">character</a> </div><div id="archive">
+<a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
+</div>
+</div>
+<div id="postamble" class="status"><div id="archive">
+  <a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
+</div>
+<div>
+ Icon(s) made by <a href=</div>
+</body>
+</html>

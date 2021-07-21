@@ -1,0 +1,30 @@
+			━━━━━━━━━━━━━━
+			 DATA TYPES IN CLOJURE
+
+				 Pankaj
+			━━━━━━━━━━━━━━
+
+
+			 <2021-07-20 Tue 08:57>
+
+
+
+
+
+Keywords in Clojure
+════════════════
+
+  Keywords are symbols that refer to themselves. They also evaluate to
+  themselves. A few simple examples will illustrate this nicely.
+
+  ┌────
+  │ :human
+  │
+  │ ; :human
+  └────
+
+
+Numerical Precision
+════════════════
+
+  In Clojure numbers can be as precise as you need them to be.

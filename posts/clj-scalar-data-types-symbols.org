@@ -7,8 +7,8 @@
 
 * Definition
   - A symbol is something that names, denotes or refers to a thing.
-  - Some examples of symbols are pictures, signs, words and variables in mathematics or programming languages.
-  - In Clojure a symbol is a form supported by the reader that is used to name Clojure objects such as  functions, operators, namespaces and Java classes.
+  - Some examples of symbols are pictures, signs, words in natural languages and variables in programming languages and mathematics.
+  - In Clojure a symbol is a form supported by the Clojure reader that is used to name objects such as  functions, operators, namespaces and Java classes.
 
 * Symbol naming rules
   - A symbol may comprise any alphanumeric characters and the following characters:
@@ -18,11 +18,11 @@
       E.g. =java.lang.Util=.
     * =/= may be used just once to separate the namespace of a symbol from its name.
       E.g. =my-ns/sparrow=.
-  - A symbol name containing =.= or =/= is said to be qualified .
+  - A symbol name containing =.= or =/= is said to be qualified.
   - A symbol name may not begin with a number.
-  - Certain symbol names are reserved by Clojure, namely, those beginning or ending with either =.= or =:=
-  - Internally, Clojure may use other undocumented characters in symbol names.
-  - In the future, Clojure may support additional characters for symbol names.
+  - Certain symbol names are reserved by Clojure, namely, those beginning or ending with either =.= or =:=.
+  - Internally Clojure may use other undocumented characters in symbol names.
+  - In the future Clojure may support additional characters for symbol names.
 
 * Properties of Symbols
   - Symbols are roughly analogous to 'identifiers' in non Lisp-like languages.
@@ -47,24 +47,27 @@
   ;; true
 #+end_src
 
-  - Two symbols are considered to be equal if they refer to the same or different objects of the same value.
-  - Two symbols are considered to be identical if they both refer to the same object.
+  - Two symbols are said to be equal if they refer to the same object or different objects of the same value.
+  - Two symbols are said to be identical only if they both refer to the same object.
 #+begin_src clojure
   ;; Equal symbols refer to objects of the same value.
-  (let [s1 'sparrow s2 'sparrow] [(= s1 s2) (identical? s1 s2)])
+  (let [s1 'sparrow
+	s2 'sparrow]
+    [(= s1 s2)
+     (identical? s1 s2)])
   ;; [true false]
 
   ;; Identical symbols refer to the same object.
   (let [owl 'barn-owl
 	bird-of-prey owl]
-    [(= owl bird-of-prey) (identical? owl bird-of-prey)])
+    [(= owl bird-of-prey)
+     (identical? owl bird-of-prey)])
   ;; [true true]
 
-  ;; Two symbols having the same name but refering to different objects
+  ;; Two symbols having the same name but referring to different objects
   ;; are not identical.
   (identical? 'hummingbird 'hummingbird)
   ;; false
-
 #+end_src
 
   - Clojure allows metadata to be associated with symbols and other objects.
@@ -87,22 +90,24 @@
 - Like keywords symbols do not belong to any particular namespace.
   This is illustrated in the following example.
 #+begin_src clojure
-  (ns ns-1)
-  (def sym 'example-symbol)
+  ;; Accessing a symbol and the value it names.
 
-  ;; Retrieve the value of a symbol
-  sym
-  ;; example-symbol
+  (ns birds)
+  (def scavenger 'vulture)
 
-  ;; Applying the actual symbol to =resolve= (via syntax-quote) returns
-  ;; the object to which the symbol will resolve.
-  (resolve 'sym)
-  ;; #'ns-1/sym
+  ;; Retrieve the value referred to by a symbol
+  scavenger
+  ;; vulture
 
-  ;; When syntax-quote is applied to a symbol, the result is the name of
-  ;; the symbol qualified with the namespace the symbol belongs to.
-  `sym
-  ;; ns-1/sym
+  ;; Syntax-quote when applied to a symbol name returns the name of the symbol
+  ;; qualified with the name of the namespace the symbol belongs to.
+  `scavenger
+  ;; birds/scavenger
+
+  ;; Retrieve the actual Clojure object to which the symbol will resolve.
+  (resolve 'scavenger)
+  ;; #'birds/scavenger
+
 #+end_src
 
 * Symbolic Programming

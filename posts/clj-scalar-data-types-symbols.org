@@ -12,15 +12,15 @@
 
 * Symbol naming rules
   - A symbol may comprise any alphanumeric characters and the following characters:
-     '+' '-' '*' '!' '?' '_' '’' '<' '>' '/' and '.'
-  - '.' and '/' have a special meaning when used to name a symbol:
-    * '.' may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
+     =+ - * ! ? _’ < > /= and =.=
+  - =.= and =/= have a special meaning when used to name a symbol:
+    * =.= may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
       E.g. =java.lang.Util=.
-    * '/' may be used just once to separate the namespace of a symbol from its name.
+    * =/= may be used just once to separate the namespace of a symbol from its name.
       E.g. =my-ns/sparrow=.
-  - A symbol name containing '.' '//'  or gch '/'  '/'  is said to be qualified .
+  - A symbol name containing =.= or =/= is said to be qualified .
   - A symbol name may not begin with a number.
-  - Certain symbol names are reserved by Clojure, namely, those beginning or ending with either '.' or ':'
+  - Certain symbol names are reserved by Clojure, namely, those beginning or ending with either =.= or =:=
   - Internally, Clojure may use other undocumented characters in symbol names.
   - In the future, Clojure may support additional characters for symbol names.
 

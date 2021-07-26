@@ -19,9 +19,9 @@
 <div id="content">
 <div class="post-date">23 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-scalar-data-types-symbols.html">Scalar data types, Part 2 - Symbols</a></h1>
 
-<div id="outline-container-org2bc167a" class="outline-2">
-<h2 id="org2bc167a">Definition</h2>
-<div class="outline-text-2" id="text-org2bc167a">
+<div id="outline-container-org44653a2" class="outline-2">
+<h2 id="org44653a2">Definition</h2>
+<div class="outline-text-2" id="text-org44653a2">
 <ul class="org-ul">
 <li>A symbol is something that names, denotes or refers to a thing.</li>
 <li>Some examples of symbols are pictures, signs, words and variables in mathematics or programming languages.</li>
@@ -30,31 +30,31 @@
 </div>
 </div>
 
-<div id="outline-container-org4ea5fbe" class="outline-2">
-<h2 id="org4ea5fbe">Symbol naming rules</h2>
-<div class="outline-text-2" id="text-org4ea5fbe">
+<div id="outline-container-org83fb552" class="outline-2">
+<h2 id="org83fb552">Symbol naming rules</h2>
+<div class="outline-text-2" id="text-org83fb552">
 <ul class="org-ul">
 <li>A symbol may comprise any alphanumeric characters and the following characters:
-'+' '-' '*' '!' '?' '_' '’' '&lt;' '&gt;' '/' and '.'</li>
-<li>'.' and '/' have a special meaning when used to name a symbol:
+<code>+ - * ! ? _’ &lt; &gt; /</code> and <code>.</code></li>
+<li><code>.</code> and <code>/</code> have a special meaning when used to name a symbol:
 <ul class="org-ul">
-<li>'.' may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
+<li><code>.</code> may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
 E.g. <code>java.lang.Util</code>.</li>
-<li>'/' may be used just once to separate the namespace of a symbol from its name.
+<li><code>/</code> may be used just once to separate the namespace of a symbol from its name.
 E.g. <code>my-ns/sparrow</code>.</li>
 </ul></li>
-<li>A symbol name containing '.' '<i>/'  or gch '</i>'  '/'  is said to be qualified .</li>
+<li>A symbol name containing <code>.</code> or <code>/</code> is said to be qualified .</li>
 <li>A symbol name may not begin with a number.</li>
-<li>Certain symbol names are reserved by Clojure, namely, those beginning or ending with either '.' or ':'</li>
+<li>Certain symbol names are reserved by Clojure, namely, those beginning or ending with either <code>.</code> or <code>:</code></li>
 <li>Internally, Clojure may use other undocumented characters in symbol names.</li>
 <li>In the future, Clojure may support additional characters for symbol names.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6a92eee" class="outline-2">
-<h2 id="org6a92eee">Properties of Symbols</h2>
-<div class="outline-text-2" id="text-org6a92eee">
+<div id="outline-container-org27fecc4" class="outline-2">
+<h2 id="org27fecc4">Properties of Symbols</h2>
+<div class="outline-text-2" id="text-org27fecc4">
 <ul class="org-ul">
 <li>Symbols are roughly analogous to 'identifiers' in non Lisp-like languages.</li>
 <li>In other languages code can normally only refer to the value named by an identifier, however in Clojure (and other Lisps) code can also refer to the symbol itself, via the special operator <code>'</code> or the function <code>symbol</code>.</li>
@@ -149,9 +149,9 @@ sym
 </div>
 </div>
 
-<div id="outline-container-orge1f90c3" class="outline-2">
-<h2 id="orge1f90c3">Symbolic Programming</h2>
-<div class="outline-text-2" id="text-orge1f90c3">
+<div id="outline-container-org02f3820" class="outline-2">
+<h2 id="org02f3820">Symbolic Programming</h2>
+<div class="outline-text-2" id="text-org02f3820">
 <ul class="org-ul">
 <li>In Clojure not only can one access a symbol (which refers to a concrete value), but one may also modify or manipulate the symbol itself as if it were a value.</li>
 <li>The method of programming where the values are manipulated directly is called <i>numeric programming</i> or <i>numeric computation</i></li>

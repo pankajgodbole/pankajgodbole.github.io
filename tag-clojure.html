@@ -17,20 +17,157 @@
 </div></div>
 <div id="content">
 <h1 class="title">Posts tagged "clojure":</h1>
-<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-reference-types.html">Referential types in Clojure</a></h1>
-<p>
-Step one: Install <code>org-static-blog</code>. <br>
-Step Two: Execute <code>M-x org-static-blog-create-new-post</code> and write the content. <br>
-Step Three: Execute <code>M-x org-static-blog-publish</code> and upload to your webhost. <br>
-Done.
-Complete..
-</p>
-<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-state.html">state</a> <a href="https://pankajgodbole.github.io/tag-concurrency.html">concurrency</a> </div>
-<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-data-types.html">Scalar data types, Part 1 - Keywords</a></h1>
+<div class="post-date">23 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-scalar-data-types-symbols.html">Scalar data types, Part 2 - Symbols</a></h1>
 
-<div id="outline-container-org5913f6f" class="outline-2">
-<h2 id="org5913f6f">Introduction</h2>
-<div class="outline-text-2" id="text-org5913f6f">
+<div id="outline-container-org2bc167a" class="outline-2">
+<h2 id="org2bc167a">Definition</h2>
+<div class="outline-text-2" id="text-org2bc167a">
+<ul class="org-ul">
+<li>A symbol is something that names, denotes or refers to a thing.</li>
+<li>Some examples of symbols are pictures, signs, words and variables in mathematics or programming languages.</li>
+<li>In Clojure a symbol is a form supported by the reader that is used to name Clojure objects such as  functions, operators, namespaces and Java classes.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4ea5fbe" class="outline-2">
+<h2 id="org4ea5fbe">Symbol naming rules</h2>
+<div class="outline-text-2" id="text-org4ea5fbe">
+<ul class="org-ul">
+<li>A symbol may comprise any alphanumeric characters and the following characters:
+'+' '-' '*' '!' '?' '_' '’' '&lt;' '&gt;' '/' and '.'</li>
+<li>'.' and '/' have a special meaning when used to name a symbol:
+<ul class="org-ul">
+<li>'.' may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
+E.g. <code>java.lang.Util</code>.</li>
+<li>'/' may be used just once to separate the namespace of a symbol from its name.
+E.g. <code>my-ns/sparrow</code>.</li>
+</ul></li>
+<li>A symbol name containing '.' '<i>/'  or gch '</i>'  '/'  is said to be qualified .</li>
+<li>A symbol name may not begin with a number.</li>
+<li>Certain symbol names are reserved by Clojure, namely, those beginning or ending with either '.' or ':'</li>
+<li>Internally, Clojure may use other undocumented characters in symbol names.</li>
+<li>In the future, Clojure may support additional characters for symbol names.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6a92eee" class="outline-2">
+<h2 id="org6a92eee">Properties of Symbols</h2>
+<div class="outline-text-2" id="text-org6a92eee">
+<ul class="org-ul">
+<li>Symbols are roughly analogous to 'identifiers' in non Lisp-like languages.</li>
+<li>In other languages code can normally only refer to the value named by an identifier, however in Clojure (and other Lisps) code can also refer to the symbol itself, via the special operator <code>'</code> or the function <code>symbol</code>.</li>
+<li>The operator <code>'</code> is called a <i>syntax quote</i> and expands to the function <code>quote</code>.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">;; Refer to a symbol itself via a special operator or function
+
+'hummingbird
+;; hummingbird
+
+(quote hummingbird)
+;; hummingbird
+
+
+;; Convert a string to a symbol
+
+(symbol "hummingbird")
+;; hummingbird
+
+(symbol? (symbol "hummingbird"))
+;; true
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Two symbols are considered to be equal if they refer to the same or different objects of the same value.</li>
+<li>Two symbols are considered to be identical if they both refer to the same object.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">;; Equal symbols refer to objects of the same value.
+(let [s1 'sparrow s2 'sparrow] [(= s1 s2) (identical? s1 s2)])
+;; [true false]
+
+;; Identical symbols refer to the same object.
+(let [owl 'barn-owl
+      bird-of-prey owl]
+  [(= owl bird-of-prey) (identical? owl bird-of-prey)])
+;; [true true]
+
+;; Two symbols having the same name but refering to different objects
+;; are not identical.
+(identical? 'hummingbird 'hummingbird)
+;; false
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Clojure allows metadata to be associated with symbols and other objects.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">;; Associating two symbols with the same name with metadata
+;; results in two non-identical symbols.
+
+;; with-meta associates a symbol with metadata
+;; meta returns the metadata associated with a symbol.
+(let [owl-1 (with-meta 'owl {:habitat "farmland"})
+      owl-2 (with-meta 'owl {:habitat "countryside"})]
+  [(= owl-1 owl-2)
+   (identical? owl-1 owl-2)
+   (meta owl-1)
+   (meta owl-2)])
+
+;; [false false {:habitat "farmland"} {:habitat "countryside"}]
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Like keywords symbols do not belong to any particular namespace.
+This is illustrated in the following example.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">(ns ns-1)
+(def sym 'example-symbol)
+
+;; Retrieve the value of a symbol
+sym
+;; example-symbol
+
+;; Applying the actual symbol to =resolve= (via syntax-quote) returns
+;; the object to which the symbol will resolve.
+(resolve 'sym)
+;; #'ns-1/sym
+
+;; When syntax-quote is applied to a symbol, the result is the name of
+;; the symbol qualified with the namespace the symbol belongs to.
+`sym
+;; ns-1/sym
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge1f90c3" class="outline-2">
+<h2 id="orge1f90c3">Symbolic Programming</h2>
+<div class="outline-text-2" id="text-orge1f90c3">
+<ul class="org-ul">
+<li>In Clojure not only can one access a symbol (which refers to a concrete value), but one may also modify or manipulate the symbol itself as if it were a value.</li>
+<li>The method of programming where the values are manipulated directly is called <i>numeric programming</i> or <i>numeric computation</i></li>
+<li>Some programming languages, while supporting numeric computation, also support computation one level of abstraction above numeric computation, i.e. at the level of symbols.</li>
+<li>This type of programming where the symbols are manipulated is called <i>symbolic programming</i> or <i>symbolic computation</i>.</li>
+<li>To provide an anology, symbolic programming is related to numeric programming in much the same way that algrebra is related to arithmetic.</li>
+<li>Symbolic programming is supported by Lisps such as Common Lisp, Scheme, Clojure and the logic programming language Prolog.</li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-scalar.html">scalar</a> <a href="https://pankajgodbole.github.io/tag-datatypes.html">datatypes</a> <a href="https://pankajgodbole.github.io/tag-symbols.html">symbols</a> </div>
+<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-scalar-data-types-keywords.html">Scalar data types, Part 1 - Keywords</a></h1>
+
+<div id="outline-container-org226e837" class="outline-2">
+<h2 id="org226e837">Introduction</h2>
+<div class="outline-text-2" id="text-org226e837">
 <ul class="org-ul">
 <li>Keywords are a very useful concept that are found in Lisp-like languages</li>
 <li>Keywords are symbols that refer to (evaluate to) themselves.</li>
@@ -55,9 +192,9 @@ A few simple examples will nicely illustrate the utility of keywords.
 </div>
 
 
-<div id="outline-container-org9fd0845" class="outline-2">
-<h2 id="org9fd0845">Keywords as a map keys</h2>
-<div class="outline-text-2" id="text-org9fd0845">
+<div id="outline-container-org95283ff" class="outline-2">
+<h2 id="org95283ff">Keywords as a map keys</h2>
+<div class="outline-text-2" id="text-org95283ff">
 <ul class="org-ul">
 <li>In practice keywords are used to denote the keys in maps</li>
 </ul>
@@ -72,9 +209,9 @@ A few simple examples will nicely illustrate the utility of keywords.
 </div>
 </div>
 
-<div id="outline-container-org9fa48ee" class="outline-2">
-<h2 id="org9fa48ee">Keywords as functions</h2>
-<div class="outline-text-2" id="text-org9fa48ee">
+<div id="outline-container-orga5e9d5c" class="outline-2">
+<h2 id="orga5e9d5c">Keywords as functions</h2>
+<div class="outline-text-2" id="text-orga5e9d5c">
 <ul class="org-ul">
 <li>In Clojure when a keyword appears in the function position of a list, it does not evaluate to itself, but rather as a function call.</li>
 </ul>
@@ -108,9 +245,9 @@ A few simple examples will nicely illustrate the utility of keywords.
 </div>
 
 
-<div id="outline-container-org52b124a" class="outline-2">
-<h2 id="org52b124a">Using keywords for enumeration</h2>
-<div class="outline-text-2" id="text-org52b124a">
+<div id="outline-container-org54f2b8b" class="outline-2">
+<h2 id="org54f2b8b">Using keywords for enumeration</h2>
+<div class="outline-text-2" id="text-org54f2b8b">
 <ul class="org-ul">
 <li>Because keywords evaluate to themselves, they can serve as enumerators in a Clojure container.</li>
 <li>Thus keywords can make Clojure source code more readable by making it more descriptive.</li>
@@ -127,9 +264,9 @@ A few simple examples will nicely illustrate the utility of keywords.
 </div>
 
 
-<div id="outline-container-org543b79c" class="outline-2">
-<h2 id="org543b79c">Keywords as directives</h2>
-<div class="outline-text-2" id="text-org543b79c">
+<div id="outline-container-org56d9ca7" class="outline-2">
+<h2 id="org56d9ca7">Keywords as directives</h2>
+<div class="outline-text-2" id="text-org56d9ca7">
 <ul class="org-ul">
 <li>Another use for keywords is as directives for functions, macros or multi-methods</li>
 </ul>
@@ -165,9 +302,9 @@ and false otherwise"
 </div>
 
 
-<div id="outline-container-org3976e46" class="outline-2">
-<h2 id="org3976e46">Qualifying keywords</h2>
-<div class="outline-text-2" id="text-org3976e46">
+<div id="outline-container-orga01d007" class="outline-2">
+<h2 id="orga01d007">Qualifying keywords</h2>
+<div class="outline-text-2" id="text-orga01d007">
 <ul class="org-ul">
 <li>A keyword may be qualified by prefixing it with two colons instead of just one.</li>
 </ul>
@@ -204,14 +341,43 @@ As we can see, when we prefix a keyword with two colons, Clojure automatically q
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-datatypes.html">datatypes</a> <a href="https://pankajgodbole.github.io/tag-keyword.html">keyword</a> </div><div id="archive">
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-datatypes.html">datatypes</a> <a href="https://pankajgodbole.github.io/tag-keyword.html">keyword</a> </div>
+<div class="post-date">20 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/clj-reference-types.html">Referential types in Clojure</a></h1>
+<p>
+Step one: Install <code>org-static-blog</code>. <br>
+Step Two: Execute <code>M-x org-static-blog-create-new-post</code> and write the content. <br>
+Step Three: Execute <code>M-x org-static-blog-publish</code> and upload to your webhost. <br>
+Done.
+Complete..
+</p>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-clojure.html">clojure</a> <a href="https://pankajgodbole.github.io/tag-state.html">state</a> <a href="https://pankajgodbole.github.io/tag-concurrency.html">concurrency</a> </div><div id="archive">
 <a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
 </div>
 </div>
 <div id="postamble" class="status"><div id="archive">
   <a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
 </div>
-<div>
- Icon(s) made by <a href=</div>
+
+<center>
+ <a rel="license"
+    href="https://creativecommons.org/licenses/by-sa/3.0/">
+   <img alt="Creative Commons License"
+	style="border-width:0"
+	src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
+ </a>
+ <br />
+ <span xmlns:dct="https://purl.org/dc/terms/"
+       href="https://purl.org/dc/dcmitype/Text"
+       property="dct:title" rel="dct:type">bastibe.de</span>
+  by
+  <a xmlns:cc="https://creativecommons.org/ns#"
+     href="https://bastibe.de"
+     property="cc:attributionName"
+     rel="cc:attributionURL">Bastian Bechtold</a>
+  is licensed under a
+  <a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/">
+   Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</center></div>
 </body>
 </html>

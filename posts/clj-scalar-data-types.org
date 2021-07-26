@@ -1,0 +1,16 @@
+#+TITLE:       Scalar data types
+#+DATE:        <2021-07-23 09:00>
+#+EMAIL:       pankajsg@gmail.com
+
+#+DESCRIPTION: A look scalar datatypes in Clojure
+#+FILETAGS:    scalar datatypes
+
+* Definition
+  - A scalar datatype is a datatype which represents a single value.
+  - Clojure supports the following datatypes:
+    1. characters
+    2. character strings
+    3. numbers
+    4. keywords
+    5. symbols
+  - Clojure is a hosted language and is closely knit with its host, Java. This means that the semantics of some of the scalar datatypes are based on those of their Java counterparts.

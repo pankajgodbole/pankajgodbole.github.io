@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://pankajgodbole.github.io/rss.xml"
+      title="RSS feed for https://pankajgodbole.github.io/">
+<title>Insights into Clojure</title>
+<meta name="author" content="John Dow">
+<meta name="referrer" content="no-referrer">
+<link href= "static/style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="static/favicon.ico"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+  <a href="https://pankajgodbole.github.io"> Insights into Clojure </a>
+</div></div>
+<div id="content">
+<h1 class="title">Posts tagged "lisp":</h1>
+<div class="post-date">30 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/symbolic-programming.html">Symbolic Programming in Clojure</a></h1>
+
+<div id="outline-container-org69e1e5e" class="outline-2">
+<h2 id="org69e1e5e">What is Symbolic Programming</h2>
+<div class="outline-text-2" id="text-org69e1e5e">
+<ul class="org-ul">
+<li>The method of programming where data are manipulated is called <i>numeric programming</i> or <i>numeric computation</i>, whereas <i>symbolic programming</i> is a programming paradigm in which the computer program can manipulate is own code as if it were data.</li>
+<li>In symbolic programming the program treats itself or other similar code as plain data.</li>
+<li>Such a program has functions on expressions as well as having functions on numbers, strings, characters, bit or other types of data.</li>
+<li>Thus, a symbolic program can produce new programs and evaluate them to produce other results.</li>
+<li>Symbolic programming is supported by Lisps such as Common Lisp, Scheme, Clojure and the logic programming language Prolog.</li>
+<li>Symbolic expressions are called s-expressions.</li>
+<li>In symbolic programming it is easy to create complex data structures such as lists, trees, maps.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org392a4ac" class="outline-2">
+<h2 id="org392a4ac">Symbolic Programming in Clojure</h2>
+<div class="outline-text-2" id="text-org392a4ac">
+</div>
+<div id="outline-container-org412d12e" class="outline-3">
+<h3 id="org412d12e"><code>eval</code> Function</h3>
+<div class="outline-text-3" id="text-org412d12e">
+<ul class="org-ul">
+<li>In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.</li>
+<li>This is provided by the <code>eval</code> function which evaluates its argument</li>
+<li>In a way <code>eval</code> is the opposite of <code>quote</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org22c3c65" class="outline-3">
+<h3 id="org22c3c65"><code>quote</code> Special Form</h3>
+<div class="outline-text-3" id="text-org22c3c65">
+<ul class="org-ul">
+<li>One can prevent an s-expression from being evaluated by "quoting" it using the special operator <code>'</code> or the function <code>quote</code>.</li>
+<li><code>quote</code> echos its argument verbatim without evaluating it. This is unlike a regular function which always first evaluates its argument. Due to this special behavior <code>quote</code> is a called a <i>special form</i>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4447029" class="outline-3">
+<h3 id="org4447029"><i>Backquote</i> Special Form</h3>
+<div class="outline-text-3" id="text-org4447029">
+<ul class="org-ul">
+<li>Sometimes it is useful to evaluate an expression or a part of it before quoting the result.</li>
+<li>This is possible via the backquote special form (written as <code>`</code>), which is the familiar <code>'</code> special form with the addition of being able to mark an expression to evalute.</li>
+<li>The special operator <code>~</code> is used to mark the part of the expression to evaluate.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">;; quote, eval and unquote
+(let [b "kingfisher"]
+  [b 'b (eval b) `~b])
+;; ["kingfisher" b "kingfisher" "kingfisher"]
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-symbols.html">symbols</a> <a href="https://pankajgodbole.github.io/tag-symbolic-programming.html">symbolic-programming</a> <a href="https://pankajgodbole.github.io/tag-lisp.html">lisp</a> <a href="https://pankajgodbole.github.io/tag-macros.html">macros</a> </div><div id="archive">
+<a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
+</div>
+</div>
+<div id="postamble" class="status"><div id="archive">
+  <a href="https://pankajgodbole.github.io/archive.html">Other posts</a>
+</div>
+
+<center>
+ <a rel="license"
+    href="https://creativecommons.org/licenses/by-sa/3.0/">
+   <img alt="Creative Commons License"
+	style="border-width:0"
+	src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
+ </a>
+ <br />
+ <span xmlns:dct="https://purl.org/dc/terms/"
+       href="https://purl.org/dc/dcmitype/Text"
+       property="dct:title" rel="dct:type">bastibe.de</span>
+  by
+  <a xmlns:cc="https://creativecommons.org/ns#"
+     href="https://bastibe.de"
+     property="cc:attributionName"
+     rel="cc:attributionURL">Bastian Bechtold</a>
+  is licensed under a
+  <a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/">
+   Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</center></div>
+</body>
+</html>

@@ -4,7 +4,77 @@
 <title><![CDATA[Insights into Clojure]]></title>
 <description><![CDATA[Insights into Clojure]]></description>
 <link>https://pankajgodbole.github.io/</link>
-<lastBuildDate>Mon, 26 Jul 2021 16:20:21 +0530</lastBuildDate>
+<lastBuildDate>Sun, 01 Aug 2021 17:45:44 +0530</lastBuildDate>
+<item>
+  <title><![CDATA[Symbolic Programming in Clojure]]></title>
+  <description><![CDATA[
+
+<div id="outline-container-org69e1e5e" class="outline-2">
+<h2 id="org69e1e5e">What is Symbolic Programming</h2>
+<div class="outline-text-2" id="text-org69e1e5e">
+<ul class="org-ul">
+<li>The method of programming where data are manipulated is called <i>numeric programming</i> or <i>numeric computation</i>, whereas <i>symbolic programming</i> is a programming paradigm in which the computer program can manipulate is own code as if it were data.</li>
+<li>In symbolic programming the program treats itself or other similar code as plain data.</li>
+<li>Such a program has functions on expressions as well as having functions on numbers, strings, characters, bit or other types of data.</li>
+<li>Thus, a symbolic program can produce new programs and evaluate them to produce other results.</li>
+<li>Symbolic programming is supported by Lisps such as Common Lisp, Scheme, Clojure and the logic programming language Prolog.</li>
+<li>Symbolic expressions are called s-expressions.</li>
+<li>In symbolic programming it is easy to create complex data structures such as lists, trees, maps.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org392a4ac" class="outline-2">
+<h2 id="org392a4ac">Symbolic Programming in Clojure</h2>
+<div class="outline-text-2" id="text-org392a4ac">
+</div>
+<div id="outline-container-org412d12e" class="outline-3">
+<h3 id="org412d12e"><code>eval</code> Function</h3>
+<div class="outline-text-3" id="text-org412d12e">
+<ul class="org-ul">
+<li>In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.</li>
+<li>This is provided by the <code>eval</code> function which evaluates its argument</li>
+<li>In a way <code>eval</code> is the opposite of <code>quote</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org22c3c65" class="outline-3">
+<h3 id="org22c3c65"><code>quote</code> Special Form</h3>
+<div class="outline-text-3" id="text-org22c3c65">
+<ul class="org-ul">
+<li>One can prevent an s-expression from being evaluated by "quoting" it using the special operator <code>'</code> or the function <code>quote</code>.</li>
+<li><code>quote</code> echos its argument verbatim without evaluating it. This is unlike a regular function which always first evaluates its argument. Due to this special behavior <code>quote</code> is a called a <i>special form</i>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4447029" class="outline-3">
+<h3 id="org4447029"><i>Backquote</i> Special Form</h3>
+<div class="outline-text-3" id="text-org4447029">
+<ul class="org-ul">
+<li>Sometimes it is useful to evaluate an expression or a part of it before quoting the result.</li>
+<li>This is possible via the backquote special form (written as <code>`</code>), which is the familiar <code>'</code> special form with the addition of being able to mark an expression to evalute.</li>
+<li>The special operator <code>~</code> is used to mark the part of the expression to evaluate.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure">;; quote, eval and unquote
+(let [b "kingfisher"]
+  [b 'b (eval b) `~b])
+;; ["kingfisher" b "kingfisher" "kingfisher"]
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-symbols.html">symbols</a> <a href="https://pankajgodbole.github.io/tag-symbolic-programming.html">symbolic-programming</a> <a href="https://pankajgodbole.github.io/tag-lisp.html">lisp</a> <a href="https://pankajgodbole.github.io/tag-macros.html">macros</a> </div>]]></description>
+  <category><![CDATA[symbols]]></category>
+  <category><![CDATA[symbolic-programming]]></category>
+  <category><![CDATA[lisp]]></category>
+  <category><![CDATA[macros]]></category>
+  <link>https://pankajgodbole.github.io/symbolic-programming.html</link>
+  <pubDate>Fri, 30 Jul 2021 09:00:00 +0530</pubDate>
+</item>
 <item>
   <title><![CDATA[Scalar data types]]></title>
   <description><![CDATA[
@@ -36,42 +106,42 @@
   <title><![CDATA[Scalar data types, Part 2 - Symbols]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org2bc167a" class="outline-2">
-<h2 id="org2bc167a">Definition</h2>
-<div class="outline-text-2" id="text-org2bc167a">
+<div id="outline-container-orgf1f2995" class="outline-2">
+<h2 id="orgf1f2995">Definition</h2>
+<div class="outline-text-2" id="text-orgf1f2995">
 <ul class="org-ul">
 <li>A symbol is something that names, denotes or refers to a thing.</li>
-<li>Some examples of symbols are pictures, signs, words and variables in mathematics or programming languages.</li>
-<li>In Clojure a symbol is a form supported by the reader that is used to name Clojure objects such as  functions, operators, namespaces and Java classes.</li>
+<li>Some examples of symbols are pictures, signs, words in natural languages and variables in programming languages and mathematics.</li>
+<li>In Clojure a symbol is a form supported by the Clojure reader that is used to name objects such as  functions, operators, namespaces and Java classes.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4ea5fbe" class="outline-2">
-<h2 id="org4ea5fbe">Symbol naming rules</h2>
-<div class="outline-text-2" id="text-org4ea5fbe">
+<div id="outline-container-orgdfbf078" class="outline-2">
+<h2 id="orgdfbf078">Symbol naming rules</h2>
+<div class="outline-text-2" id="text-orgdfbf078">
 <ul class="org-ul">
 <li>A symbol may comprise any alphanumeric characters and the following characters:
-'+' '-' '*' '!' '?' '_' '’' '&lt;' '&gt;' '/' and '.'</li>
-<li>'.' and '/' have a special meaning when used to name a symbol:
+<code>+ - * ! ? _’ &lt; &gt; /</code> and <code>.</code></li>
+<li><code>.</code> and <code>/</code> have a special meaning when used to name a symbol:
 <ul class="org-ul">
-<li>'.' may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
+<li><code>.</code> may be used once or more in the middle of a symbol name to denote a fully-qualified classname.
 E.g. <code>java.lang.Util</code>.</li>
-<li>'/' may be used just once to separate the namespace of a symbol from its name.
+<li><code>/</code> may be used just once to separate the namespace of a symbol from its name.
 E.g. <code>my-ns/sparrow</code>.</li>
 </ul></li>
-<li>A symbol name containing '.' '<i>/'  or gch '</i>'  '/'  is said to be qualified .</li>
+<li>A symbol name containing <code>.</code> or <code>/</code> is said to be qualified.</li>
 <li>A symbol name may not begin with a number.</li>
-<li>Certain symbol names are reserved by Clojure, namely, those beginning or ending with either '.' or ':'</li>
-<li>Internally, Clojure may use other undocumented characters in symbol names.</li>
-<li>In the future, Clojure may support additional characters for symbol names.</li>
+<li>Certain symbol names are reserved by Clojure, namely, those beginning or ending with either <code>.</code> or <code>:</code>.</li>
+<li>Internally Clojure may use other undocumented characters in symbol names.</li>
+<li>In the future Clojure may support additional characters for symbol names.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6a92eee" class="outline-2">
-<h2 id="org6a92eee">Properties of Symbols</h2>
-<div class="outline-text-2" id="text-org6a92eee">
+<div id="outline-container-org4c832f6" class="outline-2">
+<h2 id="org4c832f6">Properties of Symbols</h2>
+<div class="outline-text-2" id="text-org4c832f6">
 <ul class="org-ul">
 <li>Symbols are roughly analogous to 'identifiers' in non Lisp-like languages.</li>
 <li>In other languages code can normally only refer to the value named by an identifier, however in Clojure (and other Lisps) code can also refer to the symbol itself, via the special operator <code>'</code> or the function <code>symbol</code>.</li>
@@ -98,25 +168,28 @@ E.g. <code>my-ns/sparrow</code>.</li>
 </div>
 
 <ul class="org-ul">
-<li>Two symbols are considered to be equal if they refer to the same or different objects of the same value.</li>
-<li>Two symbols are considered to be identical if they both refer to the same object.</li>
+<li>Two symbols are said to be equal if they refer to the same object or different objects of the same value.</li>
+<li>Two symbols are said to be identical only if they both refer to the same object.</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-clojure">;; Equal symbols refer to objects of the same value.
-(let [s1 'sparrow s2 'sparrow] [(= s1 s2) (identical? s1 s2)])
+(let [s1 'sparrow
+      s2 'sparrow]
+  [(= s1 s2)
+   (identical? s1 s2)])
 ;; [true false]
 
 ;; Identical symbols refer to the same object.
 (let [owl 'barn-owl
       bird-of-prey owl]
-  [(= owl bird-of-prey) (identical? owl bird-of-prey)])
+  [(= owl bird-of-prey)
+   (identical? owl bird-of-prey)])
 ;; [true true]
 
-;; Two symbols having the same name but refering to different objects
+;; Two symbols having the same name but referring to different objects
 ;; are not identical.
 (identical? 'hummingbird 'hummingbird)
 ;; false
-
 </pre>
 </div>
 
@@ -145,30 +218,32 @@ E.g. <code>my-ns/sparrow</code>.</li>
 This is illustrated in the following example.</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-clojure">(ns ns-1)
-(def sym 'example-symbol)
+<pre class="src src-clojure">;; Accessing a symbol and the value it names.
 
-;; Retrieve the value of a symbol
-sym
-;; example-symbol
+(ns birds)
+(def scavenger 'vulture)
 
-;; Applying the actual symbol to =resolve= (via syntax-quote) returns
-;; the object to which the symbol will resolve.
-(resolve 'sym)
-;; #'ns-1/sym
+;; Retrieve the value referred to by a symbol
+scavenger
+;; vulture
 
-;; When syntax-quote is applied to a symbol, the result is the name of
-;; the symbol qualified with the namespace the symbol belongs to.
-`sym
-;; ns-1/sym
+;; Syntax-quote when applied to a symbol name returns the name of the symbol
+;; qualified with the name of the namespace the symbol belongs to.
+`scavenger
+;; birds/scavenger
+
+;; Retrieve the actual Clojure object to which the symbol will resolve.
+(resolve 'scavenger)
+;; #'birds/scavenger
+
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge1f90c3" class="outline-2">
-<h2 id="orge1f90c3">Symbolic Programming</h2>
-<div class="outline-text-2" id="text-orge1f90c3">
+<div id="outline-container-org5c377fb" class="outline-2">
+<h2 id="org5c377fb">Symbolic Programming</h2>
+<div class="outline-text-2" id="text-org5c377fb">
 <ul class="org-ul">
 <li>In Clojure not only can one access a symbol (which refers to a concrete value), but one may also modify or manipulate the symbol itself as if it were a value.</li>
 <li>The method of programming where the values are manipulated directly is called <i>numeric programming</i> or <i>numeric computation</i></li>

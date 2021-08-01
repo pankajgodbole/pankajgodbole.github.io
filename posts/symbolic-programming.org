@@ -1,0 +1,36 @@
+#+TITLE:       Symbolic Programming in Clojure
+#+DATE:        <2021-07-30 09:00>
+#+EMAIL:       pankajsg@gmail.com
+
+#+DESCRIPTION: An in-depth look into symbolic programming in Clojure
+#+FILETAGS:    symbols symbolic-programming lisp macros
+
+* What is Symbolic Programming
+  - The method of programming where data are manipulated is called /numeric programming/ or /numeric computation/, whereas /symbolic programming/ is a programming paradigm in which the computer program can manipulate is own code as if it were data.
+  - In symbolic programming the program treats itself or other similar code as plain data.
+  - Such a program has functions on expressions as well as having functions on numbers, strings, characters, bit or other types of data.
+  - Thus, a symbolic program can produce new programs and evaluate them to produce other results.
+  - Symbolic programming is supported by Lisps such as Common Lisp, Scheme, Clojure and the logic programming language Prolog.
+  - Symbolic expressions are called s-expressions.
+  - In symbolic programming it is easy to create complex data structures such as lists, trees, maps.
+
+* Symbolic Programming in Clojure
+** =eval= Function
+  - In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.
+  - This is provided by the =eval= function which evaluates its argument
+  - In a way =eval= is the opposite of =quote=
+
+** =quote= Special Form
+  - One can prevent an s-expression from being evaluated by "quoting" it using the special operator ='= or the function =quote=.
+  - =quote= echos its argument verbatim without evaluating it. This is unlike a regular function which always first evaluates its argument. Due to this special behavior =quote= is a called a /special form/.
+
+** /Backquote/ Special Form
+  - Sometimes it is useful to evaluate an expression or a part of it before quoting the result.
+  - This is possible via the backquote special form (written as =`=), which is the familiar ='= special form with the addition of being able to mark an expression to evalute.
+  - The special operator =~= is used to mark the part of the expression to evaluate.
+#+begin_src clojure
+  ;; quote, eval and unquote
+  (let [b "kingfisher"]
+    [b 'b (eval b) `~b])
+  ;; ["kingfisher" b "kingfisher" "kingfisher"]
+#+end_src

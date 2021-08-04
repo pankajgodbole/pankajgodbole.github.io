@@ -17,63 +17,117 @@
 </div></div>
 <div id="content">
 <h1 class="title">Posts tagged "symbolic-programming":</h1>
-<div class="post-date">30 Jul 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/symbolic-programming.html">Symbolic Programming in Clojure</a></h1>
+<div class="post-date">04 Aug 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/symbolic-programming.html">Symbolic Programming in Clojure</a></h1>
 
-<div id="outline-container-org69e1e5e" class="outline-2">
-<h2 id="org69e1e5e">What is Symbolic Programming</h2>
-<div class="outline-text-2" id="text-org69e1e5e">
+<div id="outline-container-org0fc4cc3" class="outline-2">
+<h2 id="org0fc4cc3">What is Symbolic Programming?</h2>
+<div class="outline-text-2" id="text-org0fc4cc3">
 <ul class="org-ul">
-<li>The method of programming where data are manipulated is called <i>numeric programming</i> or <i>numeric computation</i>, whereas <i>symbolic programming</i> is a programming paradigm in which the computer program can manipulate is own code as if it were data.</li>
-<li>In symbolic programming the program treats itself or other similar code as plain data.</li>
-<li>Such a program has functions on expressions as well as having functions on numbers, strings, characters, bit or other types of data.</li>
-<li>Thus, a symbolic program can produce new programs and evaluate them to produce other results.</li>
-<li>Symbolic programming is supported by Lisps such as Common Lisp, Scheme, Clojure and the logic programming language Prolog.</li>
-<li>Symbolic expressions are called s-expressions.</li>
-<li>In symbolic programming it is easy to create complex data structures such as lists, trees, maps.</li>
+<li><i>Symbolic programming</i> or <i>symbolic computating</i> is a programming paradigm in which the program treats itself or other similar code as plain data.</li>
+<li>A symbolic program can manipulate is own code as if it were plain data.</li>
+<li>Such a program has functions on expressions as well as having functions on numbers, strings, characters, bits and other types of data.</li>
+<li>Thus, a symbolic program can produce new code and evaluate the new code to produce other results.</li>
+<li>In symbolic programming it is easy to create complex data structures such as lists, trees and maps.</li>
+<li>Symbolic programming is supported by Lisps (Common Lisp, Scheme, Clojure, etc) and by the logic programming language Prolog.</li>
+<li>The expressions in a symbolic programming language are called <i>symbolic expressions</i> or <i>s-expressions</i>.</li>
+</ul>
+</div>
+
+<div id="outline-container-org0b4fc2b" class="outline-3">
+<h3 id="org0b4fc2b">Symbolic vs Numeric Computing</h3>
+<div class="outline-text-3" id="text-org0b4fc2b">
+<ul class="org-ul">
+<li>The method of programming where data are manipulated is called <i>numeric programming</i> or <i>numeric computation</i>.</li>
+<li>Symbolic computation is computing with symbols, whereas numeric computation is computing with numbers.</li>
+<li>If we were to compare computer programming with mathematics we might say that numeric computing is akin to arithmetics while symbolic computating is akin to algrebra.</li>
+<li>Thus, symbolic programming is an abstraction over numeric programming, just as algrebra is over plain arithmetics.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org392a4ac" class="outline-2">
-<h2 id="org392a4ac">Symbolic Programming in Clojure</h2>
-<div class="outline-text-2" id="text-org392a4ac">
 </div>
-<div id="outline-container-org412d12e" class="outline-3">
-<h3 id="org412d12e"><code>eval</code> Function</h3>
-<div class="outline-text-3" id="text-org412d12e">
+
+
+<div id="outline-container-org98763dd" class="outline-2">
+<h2 id="org98763dd">Symbolic Programming in Clojure</h2>
+<div class="outline-text-2" id="text-org98763dd">
+</div>
+<div id="outline-container-org15cced2" class="outline-3">
+<h3 id="org15cced2"><code>eval</code> function</h3>
+<div class="outline-text-3" id="text-org15cced2">
 <ul class="org-ul">
 <li>In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.</li>
-<li>This is provided by the <code>eval</code> function which evaluates its argument</li>
-<li>In a way <code>eval</code> is the opposite of <code>quote</code></li>
+<li>This is made possible by the <code>eval</code> function which simply evaluates its argument.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org22c3c65" class="outline-3">
-<h3 id="org22c3c65"><code>quote</code> Special Form</h3>
-<div class="outline-text-3" id="text-org22c3c65">
+<div id="outline-container-orgdba5b3a" class="outline-3">
+<h3 id="orgdba5b3a"><code>quote</code> Function and the <code>'</code> special form</h3>
+<div class="outline-text-3" id="text-orgdba5b3a">
 <ul class="org-ul">
-<li>One can prevent an s-expression from being evaluated by "quoting" it using the special operator <code>'</code> or the function <code>quote</code>.</li>
-<li><code>quote</code> echos its argument verbatim without evaluating it. This is unlike a regular function which always first evaluates its argument. Due to this special behavior <code>quote</code> is a called a <i>special form</i>.</li>
+<li>In Clojure (as in Lisps in general and in some other languages) every symbol and expression, including the argument to a function, is evaluated as soon as it is read.</li>
+<li>So, if the reader encounters a symbol it does not recognize, it will complain about it. What if we want to use a symbol as itself, rather than any value it names?</li>
+<li>Clojure being a symbolic programming language provides a function, <code>quote</code> which simply returns its argument verbatim.</li>
+<li><code>quote</code> is the opposite of <code>eval</code> which always evaluates its argument.</li>
+<li>By using the function <code>quote</code>, one can prevent an s-expression from being evaluated and its value being returned, and instead access the s-expression itself.</li>
+<li>This operation is called <i>quoting</i> and is so common in symbolic programming that is has its own special operator <code>'</code>.</li>
+<li><code>quote</code> is a <i>special form</i> because it does not evaluate its argument unlike a regular function which always first evaluates its argument.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4447029" class="outline-3">
-<h3 id="org4447029"><i>Backquote</i> Special Form</h3>
-<div class="outline-text-3" id="text-org4447029">
+<div id="outline-container-orgc21ff83" class="outline-3">
+<h3 id="orgc21ff83">Backquote special form</h3>
+<div class="outline-text-3" id="text-orgc21ff83">
 <ul class="org-ul">
-<li>Sometimes it is useful to evaluate an expression or a part of it before quoting the result.</li>
-<li>This is possible via the backquote special form (written as <code>`</code>), which is the familiar <code>'</code> special form with the addition of being able to mark an expression to evalute.</li>
-<li>The special operator <code>~</code> is used to mark the part of the expression to evaluate.</li>
+<li>While quoting is essential and very useful, sometimes it is meaningful to first evaluate an s-expression or a part of it before quoting the result.</li>
+<li>This is possible via the backquote special form (written as <code>`</code>)</li>
+<li>The <code>`</code> special form extends the functionality the familiar <code>'</code> special form, in that it enables the programer to mark an expression to evaluate.</li>
+<li>The special operator <code>~</code> (pronounced "unquote") is used to mark the part of the expression to evaluate.</li>
 </ul>
+
+<p>
+The example given below illustrates succinctly how to use <code>eval</code>, <code>'</code>, <code>`</code> and <code>~</code>.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-clojure">;; quote, eval and unquote
+<pre class="src src-clojure">;; quote, eval, backquote and unquote
+
 (let [b "kingfisher"]
   [b 'b (eval b) `~b])
 ;; ["kingfisher" b "kingfisher" "kingfisher"]
 </pre>
 </div>
+
+<p>
+A natural product of symbolic programming using <code>eval</code>, <code>'</code>, <code>`</code> and <code>~</code> are macros.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1365a0a" class="outline-2">
+<h2 id="org1365a0a">Macros</h2>
+<div class="outline-text-2" id="text-org1365a0a">
+</div>
+<div id="outline-container-org20e184a" class="outline-3">
+<h3 id="org20e184a">What is a macro?</h3>
+<div class="outline-text-3" id="text-org20e184a">
+<ul class="org-ul">
+<li>A macro is similar to a function, with one major difference: a macro never evaluates its arguments before executing its body unlike a function which always first evaluates its arguments.</li>
+<li>The programer chooses whether or not to evaluate the macro arguments in the body of the macro.</li>
+<li>Macro code makes use of the symbolic programming functions and special operators, namely, <code>eval</code>, <code>'</code>, <code>`</code> and <code>~</code>.</li>
+<li>Macros provide a means of abstracting over the common parts of any recurring coding pattern in a language, and thus help to extend the feature-set of the language.</li>
+<li>A macro is processed in two steps:
+<ol class="org-ol">
+<li><i>Macro expansion</i> - First, the macro code is executed and the result is spliced back into the program.</li>
+<li><i>Evaluation</i>      - Finally, the program modified with the expanded macro code is evaluated as if it were a regular program.</li>
+</ol></li>
+</ul>
+
+<p>
+In the next article we shall take in close look at macros and how and when to use them in Clojure.
+</p>
 </div>
 </div>
 </div>

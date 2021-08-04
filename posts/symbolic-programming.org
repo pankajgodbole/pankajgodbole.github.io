@@ -24,7 +24,7 @@
 * Symbolic Programming in Clojure
 ** =eval= function
   - In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.
-  - This is made possible by the =eval= function which simply evaluates its argument.
+  - This is made possible in Clojure by the =eval= function which simply evaluates its argument.
 
 ** =quote= Function and the ='= special form
   - In Clojure (as in Lisps in general and in some other languages) every symbol and expression, including the argument to a function, is evaluated as soon as it is read.
@@ -56,7 +56,7 @@ A natural product of symbolic programming using =eval=, ='=, =`= and =~= are mac
 * Macros
 ** What is a macro?
   - A macro is similar to a function, with one major difference: a macro never evaluates its arguments before executing its body unlike a function which always first evaluates its arguments.
-  - The programer chooses whether or not to evaluate the macro arguments in the body of the macro.
+  - The programmer chooses whether or not to evaluate the macro arguments in the body of the macro.
   - Macro code makes use of the symbolic programming functions and special operators, namely, =eval=, ='=, =`= and =~=.
   - Macros provide a means of abstracting over the common parts of any recurring coding pattern in a language, and thus help to extend the feature-set of the language.
   - A macro is processed in two steps:

@@ -19,9 +19,9 @@
 <h1 class="title">Posts tagged "symbols":</h1>
 <div class="post-date">04 Aug 2021</div><h1 class="post-title"><a href="https://pankajgodbole.github.io/symbolic-programming.html">Symbolic Programming in Clojure</a></h1>
 
-<div id="outline-container-org0fc4cc3" class="outline-2">
-<h2 id="org0fc4cc3">What is Symbolic Programming?</h2>
-<div class="outline-text-2" id="text-org0fc4cc3">
+<div id="outline-container-orgab87871" class="outline-2">
+<h2 id="orgab87871">What is Symbolic Programming?</h2>
+<div class="outline-text-2" id="text-orgab87871">
 <ul class="org-ul">
 <li><i>Symbolic programming</i> or <i>symbolic computating</i> is a programming paradigm in which the program treats itself or other similar code as plain data.</li>
 <li>A symbolic program can manipulate is own code as if it were plain data.</li>
@@ -33,9 +33,9 @@
 </ul>
 </div>
 
-<div id="outline-container-org0b4fc2b" class="outline-3">
-<h3 id="org0b4fc2b">Symbolic vs Numeric Computing</h3>
-<div class="outline-text-3" id="text-org0b4fc2b">
+<div id="outline-container-orgbce50ef" class="outline-3">
+<h3 id="orgbce50ef">Symbolic vs Numeric Computing</h3>
+<div class="outline-text-3" id="text-orgbce50ef">
 <ul class="org-ul">
 <li>The method of programming where data are manipulated is called <i>numeric programming</i> or <i>numeric computation</i>.</li>
 <li>Symbolic computation is computing with symbols, whereas numeric computation is computing with numbers.</li>
@@ -47,23 +47,23 @@
 </div>
 
 
-<div id="outline-container-org98763dd" class="outline-2">
-<h2 id="org98763dd">Symbolic Programming in Clojure</h2>
-<div class="outline-text-2" id="text-org98763dd">
+<div id="outline-container-org8255aac" class="outline-2">
+<h2 id="org8255aac">Symbolic Programming in Clojure</h2>
+<div class="outline-text-2" id="text-org8255aac">
 </div>
-<div id="outline-container-org15cced2" class="outline-3">
-<h3 id="org15cced2"><code>eval</code> function</h3>
-<div class="outline-text-3" id="text-org15cced2">
+<div id="outline-container-orgfc07696" class="outline-3">
+<h3 id="orgfc07696"><code>eval</code> function</h3>
+<div class="outline-text-3" id="text-orgfc07696">
 <ul class="org-ul">
 <li>In a symbolic program it is essential to be able to evaluate the code that is produced by a symbolic program.</li>
-<li>This is made possible by the <code>eval</code> function which simply evaluates its argument.</li>
+<li>This is made possible in Clojure by the <code>eval</code> function which simply evaluates its argument.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdba5b3a" class="outline-3">
-<h3 id="orgdba5b3a"><code>quote</code> Function and the <code>'</code> special form</h3>
-<div class="outline-text-3" id="text-orgdba5b3a">
+<div id="outline-container-org13f8a50" class="outline-3">
+<h3 id="org13f8a50"><code>quote</code> Function and the <code>'</code> special form</h3>
+<div class="outline-text-3" id="text-org13f8a50">
 <ul class="org-ul">
 <li>In Clojure (as in Lisps in general and in some other languages) every symbol and expression, including the argument to a function, is evaluated as soon as it is read.</li>
 <li>So, if the reader encounters a symbol it does not recognize, it will complain about it. What if we want to use a symbol as itself, rather than any value it names?</li>
@@ -76,9 +76,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgc21ff83" class="outline-3">
-<h3 id="orgc21ff83">Backquote special form</h3>
-<div class="outline-text-3" id="text-orgc21ff83">
+<div id="outline-container-org159f397" class="outline-3">
+<h3 id="org159f397">Backquote special form</h3>
+<div class="outline-text-3" id="text-org159f397">
 <ul class="org-ul">
 <li>While quoting is essential and very useful, sometimes it is meaningful to first evaluate an s-expression or a part of it before quoting the result.</li>
 <li>This is possible via the backquote special form (written as <code>`</code>)</li>
@@ -106,16 +106,16 @@ A natural product of symbolic programming using <code>eval</code>, <code>'</code
 </div>
 </div>
 
-<div id="outline-container-org1365a0a" class="outline-2">
-<h2 id="org1365a0a">Macros</h2>
-<div class="outline-text-2" id="text-org1365a0a">
+<div id="outline-container-orgb6004ae" class="outline-2">
+<h2 id="orgb6004ae">Macros</h2>
+<div class="outline-text-2" id="text-orgb6004ae">
 </div>
-<div id="outline-container-org20e184a" class="outline-3">
-<h3 id="org20e184a">What is a macro?</h3>
-<div class="outline-text-3" id="text-org20e184a">
+<div id="outline-container-org1f2cd77" class="outline-3">
+<h3 id="org1f2cd77">What is a macro?</h3>
+<div class="outline-text-3" id="text-org1f2cd77">
 <ul class="org-ul">
 <li>A macro is similar to a function, with one major difference: a macro never evaluates its arguments before executing its body unlike a function which always first evaluates its arguments.</li>
-<li>The programer chooses whether or not to evaluate the macro arguments in the body of the macro.</li>
+<li>The programmer chooses whether or not to evaluate the macro arguments in the body of the macro.</li>
 <li>Macro code makes use of the symbolic programming functions and special operators, namely, <code>eval</code>, <code>'</code>, <code>`</code> and <code>~</code>.</li>
 <li>Macros provide a means of abstracting over the common parts of any recurring coding pattern in a language, and thus help to extend the feature-set of the language.</li>
 <li>A macro is processed in two steps:

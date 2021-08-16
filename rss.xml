@@ -4,7 +4,64 @@
 <title><![CDATA[Insights into Clojure]]></title>
 <description><![CDATA[Insights into Clojure]]></description>
 <link>https://pankajgodbole.github.io/</link>
-<lastBuildDate>Wed, 04 Aug 2021 08:40:01 +0530</lastBuildDate>
+<lastBuildDate>Mon, 16 Aug 2021 07:55:01 +0530</lastBuildDate>
+<item>
+  <title><![CDATA[Programming Macros in Clojure]]></title>
+  <description><![CDATA[
+<p>
+In the previous article, we learnt in-depth what symbolic programming is, and saw that macros are a natural consequence of it. The present article is the first of a three-part series of articles in which we shall take a close look at what macros are, and learn how, and more importantly, when to use them in Clojure.
+</p>
+
+<div id="outline-container-org65e6524" class="outline-2">
+<h2 id="org65e6524">Symbolic Programming - a recap</h2>
+<div class="outline-text-2" id="text-org65e6524">
+<ul class="org-ul">
+<li>Non-symbolic computation means the manipulation of concrete values, whereas symbolic computation means the manipulation of the symbols that name the concrete values and of the expressions involving symbols (symbolic expressions).</li>
+<li>In symbolic programming or computating, the programmer can write code that processes individual symbols or symbolic expressions just as well as he or she could write code that processes other types of data such as numbers, characters or strings.</li>
+<li>Thus, a symbolic program is able to even manipulate its own code as if it were just another type of data.</li>
+<li>Programming using symbols is an abstraction over programming using raw values.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8aef999" class="outline-2">
+<h2 id="org8aef999">Macros</h2>
+<div class="outline-text-2" id="text-org8aef999">
+<p>
+The ability of a program to manipulate its own source code leads to some interesting possibilities. A program with such capability may now add new code to itself, or modify itself in other ways, and the compiler would proceed to compile the modified program as usual to produce new effects. Such a program is called a <i>macro</i> in symbolic programming languages.
+A macro is processed in two steps: first, the macro code is executed and the result is spliced back into the program. Next, the modified program is evaluated as if it were a regular program. The first step is called <i>macro expansion</i> and the second step is called <i>evaluation</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfd72096" class="outline-2">
+<h2 id="orgfd72096">Properties of a macro</h2>
+<div class="outline-text-2" id="text-orgfd72096">
+<ul class="org-ul">
+<li>A macro is similar to a function, but a macro never evaluates its arguments before executing its body unlike a function which always first evaluates its arguments. The programmer may choose to evaluate the arguments in the body of the macro if needed by the program.</li>
+<li>Macro code makes use of the symbolic programming functions and special operators, namely, <code>eval</code>, <code>'</code>, <code>`</code> and <code>~</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org08ee986" class="outline-2">
+<h2 id="org08ee986">Uses of macros</h2>
+<div class="outline-text-2" id="text-org08ee986">
+<p>
+  When used properly, macros are a very powerful feature of a language. By enabling the building of new functionality "on the top of" existing functionality, they help to extend the capability of the language.
+When one programs in a particular domain, one sometimes finds that certain functions, techniques or even representations of data repeat themselves. If such recurring patterns could be abstracted away, then the code would be more direct and syntactically better suited to the domain. At other times one could benefit from a language feature that would make the program clearer and more concise for just a single instance.
+  In a language that doesn't support macros, the feature-set of a language is, more or less, "baked into" the language by the language designers. Any new syntactic and semantic feature may only be added by the designers themselves, usually after a lengthy debate, and often only if they deem the feature to be appropriate and necessary for the language as a whole. In a language supporting macros, however, the programmer could immediately write a macro to make the code more succint, or write a set of macros to abstract away the common parts of any recurring coding pattern, and continue with his or her actual task.
+  In the next article, we shall learn when and how to write macros. In the third article we shall study a few common macros in Clojure.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://pankajgodbole.github.io/tags.html">Tags</a>: <a href="https://pankajgodbole.github.io/tag-macros.html">macros</a> <a href="https://pankajgodbole.github.io/tag-symbolic-programming.html">symbolic-programming</a> <a href="https://pankajgodbole.github.io/tag-lisp.html">lisp</a> </div>]]></description>
+  <category><![CDATA[macros]]></category>
+  <category><![CDATA[symbolic-programming]]></category>
+  <category><![CDATA[lisp]]></category>
+  <link>https://pankajgodbole.github.io/macros.html</link>
+  <pubDate>Wed, 11 Aug 2021 09:00:00 +0530</pubDate>
+</item>
 <item>
   <title><![CDATA[Symbolic Programming in Clojure]]></title>
   <description><![CDATA[

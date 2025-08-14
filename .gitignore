@@ -1,7 +1,0 @@
-*.tex
-*.pdf
-*~
-
-posts/*.html
-
-*/.nrepl*

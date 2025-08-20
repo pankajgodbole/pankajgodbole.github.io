@@ -1,17 +1,14 @@
-<!-- /ideas.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Ideas</title>
-  <meta name="description" content="Ideas" />
-  <meta name="keywords" content="ideas, thoughts, concepts, creativity, innovation" />
-  <meta name="author" content="psg@gmail.com" />
-
-  <style>
-    :root {
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ideas</title>
+<meta name="description" content="Ideas" />
+<meta name="keywords" content="ideas, thoughts, concepts, creativity, innovation" />
+<meta name="author" content="psg@gmail.com" />
+<style>
+      :root {
       --bg: #ffffff;
       --fg: #1f2937; /* slate-800 */
       --muted: #6b7280; /* gray-500 */
@@ -38,6 +35,24 @@
       padding: 4rem 1rem 6rem;
     }
 
+    /* Responsive YouTube embeds */
+    .youtube-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px; /* optional */
+      margin: 1em auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .youtube-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     header.site-header {
       margin-bottom: 2rem;
       padding-bottom: 1.25rem;
@@ -50,6 +65,15 @@
       margin: 0 0 0.5rem 0;
       letter-spacing: 0.2px;
     }
+
+    .keywords {
+      font-size: 0.85rem;       /* slightly smaller than normal text */
+      color: #666;            /* muted gray tone */
+      margin-top: 0.25rem;      /* subtle spacing below H1 */
+      font-style: italic;       /* gentle differentiation */
+      letter-spacing: 0.5px;    /* a little airy for readability */
+    }
+
 
     .meta {
       display: flex;
@@ -158,123 +182,52 @@
       details { border: none; box-shadow: none; }
       .controls { display: none; }
     }
-  </style>
+
+</style>
 </head>
 <body>
-  <div class="container">
-    <header class="site-header" role="banner">
-      <h1>Ideas</h1>
-      <div class="meta" aria-label="Document metadata">
-        <div>
-          <strong>Date:</strong>
-          <time datetime="2025-08-04T09:00:00">August 4, 2025, 09:00</time>
-        </div>
-        <div>
-          <strong>Email:</strong>
-          <a href="mailto:psg@gmail.com" rel="author">psg@gmail.com</a>
-        </div>
-        <div class="tags" aria-label="Tags">
-          <span class="tag" title="ideas">ideas</span>
-          <span class="tag" title="thoughts">thoughts</span>
-          <span class="tag" title="concepts">concepts</span>
-          <span class="tag" title="creativity">creativity</span>
-          <span class="tag" title="innovation">innovation</span>
-        </div>
-      </div>
+<div class="container">
+<header class="site-header">
+<h1>Ideas</h1>
+<p class='keywords'><em>Keywords:</em> ideas, thoughts, concepts, creativity, innovation</p>
+<div class="meta" aria-label="Document metadata">
+  <!-- DATE -->
+  <!-- parse the DATE value and render <time datetime="...">... -->
+  <!-- EMAIL -->
+  <!-- show mailto: link -->
+  <!-- FILETAGS -->
+  <!-- show tags joined by commas -->
+</div>
+<nav class="controls" aria-label="Collapsible controls">
+  <button class="btn" id="expand-all" type="button" aria-controls="main-article">Expand all</button>
+  <button class="btn" id="collapse-all" type="button" aria-controls="main-article">Collapse all</button>
+</nav>
+</header>
+<main id="content" role="main">
+<article id="main-article">
+<details><summary><span class="summary-text">Selection Guides</span></summary><div class="section-body"><details><summary><span class="summary-text">Wines</span></summary><div class="section-body"><details><summary><span class="summary-text">Wines by Region</span></summary><div class="section-body"><details><summary><span class="summary-text">Bordeaux</span></summary><div class="section-body"><details><summary><span class="summary-text">Left Bank</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Médoc</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Graves</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Sauternes</span></summary><div class="section-body"><p>Sauternes is a sweet wine region in Bordeaux, known for its botrytized wines.</p><p><img src="images/sauternes_wine_bottle.jpg" alt="file:images/sauternes_wine_bottle.jpg"></p><p>Watch this video for more information:</p><p><div class="youtube-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/V3DUjc7M1uQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></p></div></details><details><summary><span class="summary-text">Right Bank</span></summary><div class="section-body"></div></details></div></details><details><summary><span class="summary-text">Burgundy</span></summary><div class="section-body"><details><summary><span class="summary-text">Côte d'Or</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Côte Chalonnaise</span></summary><div class="section-body"></div></details></div></details></div></details></div></details><details><summary><span class="summary-text">Cheeses</span></summary><div class="section-body"><details><summary><span class="summary-text">Cheeses by Type</span></summary><div class="section-body"><details><summary><span class="summary-text">Soft Cheeses</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Hard Cheeses</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Blue Cheeses</span></summary><div class="section-body"></div></details></div></details></div></details><details><summary><span class="summary-text">Spirits</span></summary><div class="section-body"><details><summary><span class="summary-text">Spirits by Type</span></summary><div class="section-body"><details><summary><span class="summary-text">Whiskies</span></summary><div class="section-body"><details><summary><span class="summary-text">Scotch</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Bourbon</span></summary><div class="section-body"></div></details></div></details><details><summary><span class="summary-text">Rums</span></summary><div class="section-body"><details><summary><span class="summary-text">Dark Rum</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">White Rum</span></summary><div class="section-body"></div></details></div></details><details><summary><span class="summary-text">Gins</span></summary><div class="section-body"><details><summary><span class="summary-text">London Dry</span></summary><div class="section-body"></div></details></div></details></div></details></div></details><details><summary><span class="summary-text">Chocolates</span></summary><div class="section-body"><details><summary><span class="summary-text">Chocolates by Origin</span></summary><div class="section-body"><details><summary><span class="summary-text">Single Origin</span></summary><div class="section-body"><details><summary><span class="summary-text">Madagascar</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Ecuador</span></summary><div class="section-body"></div></details></div></details><details><summary><span class="summary-text">Blends</span></summary><div class="section-body"><details><summary><span class="summary-text">Dark Chocolate</span></summary><div class="section-body"></div></details></div></details></div></details></div></details><details><summary><span class="summary-text">Meats</span></summary><div class="section-body"></div></details><details><summary><span class="summary-text">Gemstones</span></summary><div class="section-body"></div></details></div></details>
+</article>
+</main>
+</div>
+<script>
+// Expand/Collapse All controls
+(function () {
+  const root = document.getElementById('main-article');
+  const expandAll = document.getElementById('expand-all');
+  const collapseAll = document.getElementById('collapse-all');
 
-      <nav class="controls" aria-label="Collapsible controls">
-        <button class="btn" id="expand-all" type="button" aria-controls="main-article">Expand all</button>
-        <button class="btn" id="collapse-all" type="button" aria-controls="main-article">Collapse all</button>
-      </nav>
-    </header>
+  function setAll(open) {
+    root.querySelectorAll('details').forEach(d => { d.open = open; });
+  }
 
-    <main id="content" role="main">
-      <article id="main-article" aria-labelledby="doc-title">
-        <!-- * Selection Guides -->
-        <details>
-          <summary><span class="summary-text">Selection Guides</span></summary>
-          <div class="section-body">
+  expandAll.addEventListener('click', () => setAll(true));
+  collapseAll.addEventListener('click', () => setAll(false));
 
-            <!-- ** Wines -->
-            <section>
-              <details>
-                <summary><span class="summary-text">Wines</span></summary>
-                <div class="section-body">
-                  <!-- Content for Wines goes here -->
-                </div>
-              </details>
-            </section>
+  // Optional: start in "overview" like Org-mode (top level closed, keep nested default closed)
+  // Close all, then open only the top-level article sections if you prefer.
+  // setAll(false);
+})();
 
-            <!-- ** Cheeses -->
-            <section>
-              <details>
-                <summary><span class="summary-text">Cheeses</span></summary>
-                <div class="section-body">
-                  <!-- Content for Cheeses goes here -->
-                </div>
-              </details>
-            </section>
-
-            <!-- ** Chocolates -->
-            <section>
-              <details>
-                <summary><span class="summary-text">Chocolates</span></summary>
-                <div class="section-body">
-                  <!-- Content for Chocolates goes here -->
-                </div>
-              </details>
-            </section>
-
-            <!-- ** Meats -->
-            <section>
-              <details>
-                <summary><span class="summary-text">Meats</span></summary>
-                <div class="section-body">
-                  <!-- Content for Meats goes here -->
-                </div>
-              </details>
-            </section>
-
-            <!-- ** Gemstones -->
-            <section>
-              <details>
-                <summary><span class="summary-text">Gemstones</span></summary>
-                <div class="section-body">
-                  <!-- Content for Gemstones goes here -->
-                </div>
-              </details>
-            </section>
-
-          </div>
-        </details>
-
-      </article>
-    </main>
-
-    <footer class="site-footer" role="contentinfo">
-      <p><em>Description:</em> Ideas</p>
-      <p>Generated from Org headings using semantic HTML5 with native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> disclosure widgets.</p>
-    </footer>
-  </div>
-
-  <script>
-    // Expand/Collapse All controls
-    (function () {
-      const root = document.getElementById('main-article');
-      const expandAll = document.getElementById('expand-all');
-      const collapseAll = document.getElementById('collapse-all');
-
-      function setAll(open) {
-        root.querySelectorAll('details').forEach(d => { d.open = open; });
-      }
-
-      expandAll.addEventListener('click', () => setAll(true));
-      collapseAll.addEventListener('click', () => setAll(false));
-
-      // Optional: start in "overview" like Org-mode (top level closed, keep nested default closed)
-      // Close all, then open only the top-level article sections if you prefer.
-      setAll(false);
-    })();
-  </script>
+</script>
 </body>
 </html>
